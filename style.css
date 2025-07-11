@@ -2,49 +2,12 @@
 body, html {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
-  color: white;
-  background: #0a0a0a;
   overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  background: #000;
 }
 
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-}
-
-nav .logo {
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #00ffff;
-}
-
-#globe {
+#container {
   position: fixed;
   top: 0;
   left: 0;
@@ -52,22 +15,42 @@ nav a:hover {
   height: 100%;
 }
 
-.overlay {
+.info {
   position: absolute;
-  top: 20%;
+  top: 5%;
   left: 5%;
-  max-width: 400px;
+  color: white;
   background: rgba(0, 0, 0, 0.5);
-  padding: 2rem;
+  padding: 1rem 2rem;
   border-radius: 8px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
+  max-width: 300px;
 }
 
-.overlay h1 {
-  margin-top: 0;
-  font-size: 2rem;
+.info h1 {
+  margin: 0;
+  font-size: 1.8rem;
 }
 
-.overlay p {
-  line-height: 1.5;
+.info p {
+  margin: 0.3rem 0 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: #00ffff;
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #00cccc;
+}
+
+#info-box-description {
+  margin-top: 1rem;
 }
