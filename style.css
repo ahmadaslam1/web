@@ -1,67 +1,172 @@
 
-body, html {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  font-family: 'Inter', sans-serif;
-  background: #0a0a0a;
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    background-image: url('starry_night.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
 }
 
-#globe-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.header {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.header h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.header p {
+    margin: 5px 0 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#canvas-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
 }
 
 #info-box {
-  position: absolute;
-  top: 5%;
-  left: 5%;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 1.5rem 2rem;
-  border-radius: 8px;
-  color: white;
-  backdrop-filter: blur(5px);
-  max-width: 320px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 400px;
+    z-index: 1000;
+    color: white;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-#info-box h1 {
-  margin-top: 0;
-  font-size: 1.8rem;
+#info-box.visible {
+    visibility: visible;
+    opacity: 1;
 }
 
-#info-box p {
-  margin: 0.5rem 0;
+#about-me-button-container,
+#skills-button-container,
+#contact-button-container {
+    position: absolute;
+    left: 5.5%;
+    transform: translateX(-50%);
+    z-index: 1500;
+    margin-top: 60px;
 }
 
-.btn {
-  display: inline-block;
-  background: #00ffff;
-  color: #111827;
-  padding: 0.6rem 1.2rem;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 600;
-  margin-top: 0.8rem;
-  transition: background 0.3s;
+#about-me-button-container { top: 0; }
+#skills-button-container { top: 60px; }
+#contact-button-container { bottom: 50px; right: 0; left: auto; transform: translateX(-50%); }
+
+button {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
 }
 
-.btn:hover {
-  background: #00cccc;
+button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-#socials {
-  margin-top: 1rem;
+#about-me-box,
+#skills-box,
+#contact-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 400px;
+    z-index: 1000;
+    color: white;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-#socials a {
-  color: #00ffff;
-  text-decoration: none;
-  margin: 0 0.3rem;
+#about-me-box.visible,
+#skills-box.visible,
+#contact-box.visible {
+    visibility: visible;
+    opacity: 1;
 }
 
-#socials a:hover {
-  text-decoration: underline;
+.slider-container {
+    position: absolute;
+    bottom: 40px;
+    left: 48%;
+    transform: translateX(-50%);
+    z-index: 2000;
+}
+
+.toggle {
+    display: none;
+}
+
+.toggle-label {
+    width: 50px;
+    height: 26px;
+    background-color: #ccc;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s ease;
+}
+
+.toggle-label:before {
+    content: '☀️';
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.toggle:checked + .toggle-label {
+    background-color: #4a90e2;
+}
+
+.toggle:checked + .toggle-label:before {
+    content: '🌙';
+    transform: translateY(-50%) translateX(22px);
+}
+
+img {
+    border-radius: 50%;
 }
