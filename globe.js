@@ -1,29 +1,29 @@
 
 import * as THREE from 'three';
 
-const container = document.getElementById('container');
+const container = document.getElementById('globe-container');
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 container.appendChild(renderer.domElement);
 
-const geometry = new THREE.SphereGeometry(5, 64, 64);
-const texture = new THREE.TextureLoader().load('earth_texture.jpg');
-const material = new THREE.MeshBasicMaterial({ map: texture });
-const globe = new THREE.Mesh(geometry, material);
+const globeGeometry = new THREE.SphereGeometry(5, 64, 64);
+const globeTexture = new THREE.TextureLoader().load('earth_texture.jpg');
+const globeMaterial = new THREE.MeshBasicMaterial({ map: globeTexture });
+const globe = new THREE.Mesh(globeGeometry, globeMaterial);
 scene.add(globe);
 
+// Example markers
 const markers = [
   { lat: 30, lon: 70, description: "Worked on medical simulators at Artech Biomed" },
   { lat: 51, lon: -0.1, description: "Freelance design projects in London" }
 ];
 
-// Marker creation example
 markers.forEach(marker => {
-  const markerGeometry = new THREE.SphereGeometry(0.1, 16, 16);
-  const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-  const markerMesh = new THREE.Mesh(markerGeometry, markerMaterial);
+  const markerGeo = new THREE.SphereGeometry(0.1, 16, 16);
+  const markerMat = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+  const markerMesh = new THREE.Mesh(markerGeo, markerMat);
 
   const phi = (90 - marker.lat) * (Math.PI / 180);
   const theta = (marker.lon + 180) * (Math.PI / 180);
@@ -36,13 +36,7 @@ markers.forEach(marker => {
   scene.add(markerMesh);
 
   markerMesh.callback = () => {
-    const infoBox = document.getElementById('info-box');
-    infoBox.innerHTML = `
-      <h1>Ahmad Aslam</h1>
-      <p>Visual Artist & Developer</p>
-      <p id="info-box-description">${marker.description}</p>
-      <a href="resume.pdf" target="_blank" class="btn">Download Resume</a>
-    `;
+    document.getElementById('description').innerText = marker.description;
   };
 });
 
