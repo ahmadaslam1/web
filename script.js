@@ -3,8 +3,9 @@
 // Scene setup
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0x000000, 0);
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
 camera.position.set(100, 100, 60);
