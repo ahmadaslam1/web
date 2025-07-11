@@ -123,10 +123,11 @@ button:hover {
 
 .slider-container {
     position: absolute;
-    bottom: 40px;
-    left: 48%;
+    right: 0;
+    bottom: 120px;
+    left: auto;
     transform: translateX(-50%);
-    z-index: 2000;
+    z-index: 1500;
 }
 
 .toggle {
