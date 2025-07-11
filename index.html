@@ -1,19 +1,62 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <title>Ahmad Aslam Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="globeViz"></div>
-    <div id="content">
-      <h1>Ahmad Aslam</h1>
-      <p id="description">Click on the markers to learn more about my work and projects.</p>
-      <a href="resume.pdf" target="_blank" class="button">Download Resume</a>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ahmad Aslam Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <center>
+        <div class="header">
+            <h1>Muhammad Ahmad Aslam</h1>
+            <p><strong>Interactive Resumé</strong></p>
+        </div>
+    </center>
+    <div id="canvas-container"></div>
+
+    <div id="info-box" class="hidden">
+        <p id="location-info"></p>
     </div>
-    <script src="three.min.js"></script>
-    <script src="globe.js"></script>
-  </body>
+
+    <div id="about-me-button-container">
+        <button id="about-me-button">About</button>
+    </div>
+    <div id="about-me-box" class="hidden">
+        <p id="about-me-info">
+            <!-- About content -->
+        </p>
+    </div>
+
+    <div id="skills-button-container">
+        <button id="skills-button">Skills</button>
+    </div>
+    <div id="skills-box" class="hidden">
+        <p id="skills-info">
+            <!-- Skills content -->
+        </p>
+    </div>
+
+    <div id="contact-button-container">
+        <button id="contact-button">Help</button>
+    </div>
+    <div id="contact-box" class="hidden">
+        <p id="contact-info">
+            <!-- Contact/help content -->
+        </p>
+    </div>
+
+    <div class="slider-container">
+        <input type="checkbox" id="mode-toggle" class="toggle">
+        <label for="mode-toggle" class="toggle-label-modern">
+            <span class="toggle-thumb-modern"></span>
+        </label>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>
